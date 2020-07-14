@@ -14,8 +14,8 @@ const {valid} = require('joi')
 
 
 /** MODELS */
-const Team = require("../../models/Team")
-const Fixture = require("../../models/Fixture")
+const {Team} = require("../../models/Team")
+const {Fixture} = require("../../models/Fixture")
 
 /** MODELS */
 
@@ -73,29 +73,35 @@ router.get("/teams", auth,(req, res) => {
 
 
 /** PENDING FIXTURES */
-router.get("/fixtures/pending", auth,(req, res) => {
-    Fixture.find()
-            .where('status')
-            .equals('pending')
-            .then((fixtures) => {
-                res.json(fixtures)
-            })
-            .catch((e) => {
-                return res.status(400).json(e.message); 
-            })
+router.get("/fixtures/pending", auth,async(req, res) => {
+    console.log(Fixture.Fixture)
+    // const fixture = Fixture.Fixture
+    try{
+        const get_fixture =await Fixture.find({}).where('status').equals('pending')
+        res.json(get_fixture)
+    }catch(e){
+        return res.status(400).json(e.message); 
+    }
+ 
+    // const fixture = await Fixture.find({})
+    //         // .where('status').equals('pending')
+    //         .then((fixtures) => {
+    //             res.json(fixtures)
+    //         })
+    //         .catch((e) => {
+    //             return res.status(400).json(e.message); 
+    //         })
 })
 
 /** COMPLETED FIXTURES */
-router.get("/fixtures/completed", auth,(req, res) => {
-    Fixture.find()
-            .where('status')
-            .equals('completed')
-            .then((fixtures) => {
-                res.json(fixtures)
-            })
-            .catch((e) => {
-                return res.status(400).json(e.message); 
-            })
+router.get("/fixtures/completed", auth,async(req, res) => {
+    try{
+        const get_fixture =await Fixture.find({}).where('status').equals('completed')
+        res.json(get_fixture)
+    }catch(e){
+        return res.status(400).json(e.message); 
+    }
+
 })
 
 module.exports = router;

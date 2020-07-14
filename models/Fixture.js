@@ -3,8 +3,9 @@ Joi.objectId = require('joi-objectid')(Joi)
 
 const mongoose = require('mongoose')
 
+const Schema = mongoose.Schema;
 
-const Fixture = mongoose.model('Fixture', new mongoose.Schema({
+const FixtureSchema =  new Schema({
     user:{
         type:Schema.Types.ObjectId,
         ref:'User'
@@ -42,7 +43,7 @@ const Fixture = mongoose.model('Fixture', new mongoose.Schema({
         type:Date,
         default:Date.now
     }
-}))
+})
 
 
 function validateFixture(fixture){
@@ -56,6 +57,11 @@ function validateFixture(fixture){
    return Joi.validate(fixture, schema)
 }
 
+module.exports = {
+    Fixture:mongoose.model("Fixture", FixtureSchema),
+    validate : validateFixture
+}
+// exports.Fixture = Fixture
+// exports.validate = validateFixture
 
-exports.Fixture = Fixture
-exports.validate = validateFixture
+// module.exports =Project = mongoose.model("ProjectSchema", ProjectSchema)

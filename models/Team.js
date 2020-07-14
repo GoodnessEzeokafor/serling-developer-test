@@ -21,7 +21,7 @@ const Team = mongoose.model('Team', new mongoose.Schema({
         required:true
     },
     team_coach:{
-        type:string,
+        type:String,
         required:true
     }
 }))
