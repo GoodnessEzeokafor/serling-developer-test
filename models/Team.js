@@ -2,8 +2,9 @@ const Joi = require('joi')
 const mongoose = require('mongoose')
 
 
+const Schema = mongoose.Schema;
 
-const Team = mongoose.model('Team', new mongoose.Schema({
+const TeamSchema =  new Schema({
     team_name:{
         type:String,
         required:true,
@@ -24,7 +25,7 @@ const Team = mongoose.model('Team', new mongoose.Schema({
         type:String,
         required:true
     }
-}))
+})
 
 
 
@@ -38,6 +39,18 @@ function validateTeam(team){
    return Joi.validate(team, schema)
 }
 
-
-exports.Team = Team
-exports.validate = validateTeam
+TeamSchema.index({
+    team_name: 'text',
+    team_description: 'text',
+    team_coach:"text"
+  }, {
+    weights: {
+        team_name: 5,
+        team_description:5,
+        team_coach:5
+    },
+  });
+module.exports = {
+    Team:mongoose.model("Team", TeamSchema),
+    validate : validateTeam
+}
