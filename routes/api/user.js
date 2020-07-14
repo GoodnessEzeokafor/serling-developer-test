@@ -13,6 +13,12 @@ const mongoose = require("mongoose")
 const {valid} = require('joi')
 
 
+/** MODELS */
+const Team = require("../../models/Team")
+const Fixture = require("../../models/Fixture")
+
+/** MODELS */
+
 
 router.get("/me", auth, async(req, res) => {
     const user = await User.findById(req.user._id).select('-password')
@@ -26,9 +32,9 @@ router.post("/", async(req, res) => {
     const {error} = validate(req.body)
     if(error) return res.status(400).json(error.details[0].message)
     
-    if(req.body.password != req.body.confirmPassword){
-        return res.status(400).json('Password Must Be The Same'); 
-    }
+    // if(req.body.password != req.body.confirmPassword){
+    //     return res.status(400).json('Password Must Be The Same'); 
+    // }
     let user = await User.findOne({
         email:req.body.email
     })
@@ -51,6 +57,45 @@ router.post("/", async(req, res) => {
         username:user.username,
         email:user.email
     })
+})
+
+
+
+router.get("/teams", auth,(req, res) => {
+    Team.find()
+        .then((team) => {
+            res.json(team)
+        })
+        .catch((e) => {
+            return res.status(400).json(e.message); 
+        })
+})
+
+
+/** PENDING FIXTURES */
+router.get("/fixtures/pending", auth,(req, res) => {
+    Fixture.find()
+            .where('status')
+            .equals('pending')
+            .then((fixtures) => {
+                res.json(fixtures)
+            })
+            .catch((e) => {
+                return res.status(400).json(e.message); 
+            })
+})
+
+/** COMPLETED FIXTURES */
+router.get("/fixtures/completed", auth,(req, res) => {
+    Fixture.find()
+            .where('status')
+            .equals('completed')
+            .then((fixtures) => {
+                res.json(fixtures)
+            })
+            .catch((e) => {
+                return res.status(400).json(e.message); 
+            })
 })
 
 module.exports = router;
