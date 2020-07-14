@@ -1,0 +1,16 @@
+{
+  "name": "assesement_test",
+  "version": "1.0.0",
+  "description": "Assesement test for sterling bank",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app",
+    "dev": "nodemon app"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
