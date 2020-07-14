@@ -4,13 +4,23 @@
   "description": "Assesement test for sterling bank",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node app",
     "dev": "nodemon app"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "joi": "^14.3.1",
+    "joi-objectid": "^3.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.24",
+    "redis": "^3.0.2",
+    "supertest": "^4.0.2"
+  },
+  "devDependencies": {
+    "jest": "^26.1.0"
   }
 }
