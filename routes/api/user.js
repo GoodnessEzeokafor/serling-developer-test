@@ -15,7 +15,7 @@ const {valid} = require('joi')
 
 
 router.get("/me", auth, async(req, res) => {
-    const User = await User.findById(req.user._id).select('-password')
+    const user = await User.findById(req.user._id).select('-password')
             .catch((e) => {
                 return  res.status(400).json(e.message)
             })
@@ -45,7 +45,13 @@ router.post("/", async(req, res) => {
     user.password = await bcrypt.hash(user.password,salt)
     await user.save()
     const token = user.generateAuthtoken(`vtg7880h)&*%^%@$g52`)
-    res.header('x-auth-token',token).json(_.pick(user, ['_id', 'username', 'email']))
+    res.header('x-auth-token',token).json({
+        token,
+        id:user._id,
+        username:user.username,
+        email:user.email
+    })
 })
 
 module.exports = router;
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBlMDAxM2IxYTIwZjNmNDJjNTRkMDciLCJpYXQiOjE1OTQ3NTMwNDR9.7LJ4cw_0G0DHlK4vog_2Oj7-D9K-END_w6hO1-4Tkws

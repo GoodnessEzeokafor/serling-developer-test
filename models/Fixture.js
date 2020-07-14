@@ -27,6 +27,10 @@ const Fixture = mongoose.model('Fixture', new mongoose.Schema({
         minLength:5,
         maxlength:100
     },
+    status:{
+        type:String,
+        default:"pending"
+    },
     link:{
         type:String
     },
