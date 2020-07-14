@@ -45,7 +45,8 @@ function validateFixture(fixture){
     const schema = {
         title:Joi.string().min(5).max(100).required(),
         user: Joi.objectId().required(),
-        phone:Joi.string()
+        team1:Joi.string().min(5).max(100).required(),        
+        team2:Joi.string().min(5).max(100).required(),
    }
 
    return Joi.validate(fixture, schema)

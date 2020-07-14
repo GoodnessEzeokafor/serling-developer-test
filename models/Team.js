@@ -21,7 +21,7 @@ const Team = mongoose.model('Team', new mongoose.Schema({
         required:true
     },
     team_coach:{
-        type:Number,
+        type:string,
         required:true
     }
 }))
@@ -32,7 +32,8 @@ const Team = mongoose.model('Team', new mongoose.Schema({
 function validateTeam(team){
     const schema = {
         team_name:Joi.string().min(5).max(50).required(),
-        team_description:Joi.string().min(5).max(500).required()
+        team_description:Joi.string().min(5).max(500).required(),
+        team_coach:Joi.string().required(),
    }
    return Joi.validate(team, schema)
 }
