@@ -1,5 +1,20 @@
 var express = require("express");
-var app = express();
+var bodyParser = require('body-parser');
+const cors = require("cors");
+const app = express();
+
+
+app.use(
+  cors({
+    // origin: ["http://localhost:3000", "http://127.0.0.1:3000"],
+    credentials: true
+  })
+);
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
 
 
 
@@ -31,6 +46,7 @@ if ( app.get('env') === 'development' ) {
   mongoose.connect('mongodb://localhost/sterling',
   { useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true,
     // useUnifiedTopology: true ,
     useFindAndModify: false
   },
@@ -73,7 +89,9 @@ app.use('/api/fixtures', require('./routes/api/fixtures'))
 // app.use('/api/admin', require('./routes/api/admin'))
 
 /** ROUTES */
-
+app.get("/", (req, res)=> {
+  res.json("HELLO")
+})
 app.listen(port, function () {
-  console.log('Example app listening on port 8080!')
+  console.log(`Example app listening on port ${port}!`)
 })
