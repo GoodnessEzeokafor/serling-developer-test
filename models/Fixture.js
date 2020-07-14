@@ -46,6 +46,7 @@ const FixtureSchema =  new Schema({
 })
 
 
+
 function validateFixture(fixture){
     const schema = {
         title:Joi.string().min(5).max(100).required(),
@@ -56,7 +57,19 @@ function validateFixture(fixture){
 
    return Joi.validate(fixture, schema)
 }
-
+FixtureSchema.index({
+    title: 'text',
+    team1: 'text',
+    team2:"text",
+    status:"text"
+  }, {
+    weights: {
+      title: 5,
+      team1:2,
+      team:2,
+      status: 4,
+    },
+  });
 module.exports = {
     Fixture:mongoose.model("Fixture", FixtureSchema),
     validate : validateFixture
@@ -65,3 +78,10 @@ module.exports = {
 // exports.validate = validateFixture
 
 // module.exports =Project = mongoose.model("ProjectSchema", ProjectSchema)
+// const term = 'apple';
+
+// Product.find({
+//   $text: { $search: term },
+// })
+//   .then(products => console.log(products))
+//   .catch(e => console.error(e));

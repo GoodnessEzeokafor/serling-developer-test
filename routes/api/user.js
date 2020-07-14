@@ -104,5 +104,30 @@ router.get("/fixtures/completed", auth,async(req, res) => {
 
 })
 
+
+/** search fixture */
+router.get("/fixtures/search", async(req, res) => {
+    try{
+        const query = req.query.search_term
+        console.log(query)
+        const search_fixtures = await Fixture.find({
+              $text: { $search: query },
+              
+        })
+        res.json(search_fixtures)
+    }catch(e){
+        return res.status(400).json(e.message); 
+    }
+})
+/** end search fixtures */
+
 module.exports = router;
 // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBlMDAxM2IxYTIwZjNmNDJjNTRkMDciLCJpYXQiOjE1OTQ3NTMwNDR9.7LJ4cw_0G0DHlK4vog_2Oj7-D9K-END_w6hO1-4Tkws
+
+
+
+// Product.find({
+//   $text: { $search: term },
+// })
+//   .then(products => console.log(products))
+//   .catch(e => console.error(e));
