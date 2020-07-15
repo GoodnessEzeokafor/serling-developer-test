@@ -19,9 +19,9 @@ router.put("/set-admin/:id",auth,async (req, res) => {
 
 /** set admin **/
 
-
+// 5f0dfceb9a1ebe1869400f3e
 /** GET ALL USERS */
-router.get("/get-users", admin,async(req, res) => {
+router.get("/get-users",auth,admin, async(req, res) => {
     try{
         const user = await User.find()
         res.json(user)
