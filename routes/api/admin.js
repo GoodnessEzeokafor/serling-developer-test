@@ -130,10 +130,29 @@ router.get("/list-fixtures", auth,admin,async(req, res) => {
 /** LIST FIXTURES */
 
 /** EDIT FIXTURES */
-
+router.put("/edit-fixture/:id", auth, admin, async(req, res) => {
+    try{
+        const team = await Fixture.findByIdAndUpdate(req.params.id, {$set:{
+            "status":"completed"
+        }}) 
+        // team = await team.save();
+        res.json(team);    
+    }catch(e){
+        return res.status(400).json(e.message); 
+    }
+})
 /** EDIT FIXTURES */
 
 /** REMOVE FIXTURES */
+router.delete("/delete-fixtures/:id", auth, admin, async(req, res) => {
+    try{
 
+        const team = await Fixture.findByIdAndRemove(req.params.id) 
+        // team = await team.save();
+        res.json("DELETED!!!");    
+    }catch(e){
+        return res.status(400).json(e.message); 
+    }
+})
 /** REMOVE FIXTURES */
 module.exports = router;
