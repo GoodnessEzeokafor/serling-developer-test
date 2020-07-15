@@ -6,10 +6,6 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const FixtureSchema =  new Schema({
-    user:{
-        type:Schema.Types.ObjectId,
-        ref:'User'
-    },
     title:{
         type:String,
         required:true,
@@ -47,7 +43,6 @@ const FixtureSchema =  new Schema({
 function validateFixture(fixture){
     const schema = {
         title:Joi.string().min(5).max(100).required(),
-        user: Joi.objectId().required(),
         team1:Joi.objectId().required(),        
         team2:Joi.objectId().required(),
    }

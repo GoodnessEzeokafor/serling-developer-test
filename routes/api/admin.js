@@ -100,9 +100,34 @@ router.delete("/delete-team/:id", auth, admin, async(req, res) => {
 
 /** CREATE FIXTURES */
 
-
+router.post("/create-fixture", auth, admin, async(req, res) => {
+    try{
+        const { error } = validateFixture(req.body); 
+        if (error) return res.status(400).send(error.details[0].message);
+        let fixture = new Fixture({
+            title:req.body.title,
+            team1:req.body.team1,        
+            team2:req.body.team2,
+        })
+        fixture = await fixture.save();
+    res.json(fixture);
+    }catch(e){
+        return res.status(400).json(e.message); 
+    }
+})
 /** CREATE FIXTURES */
 
+/** LIST FIXTURES */
+router.get("/list-fixtures", auth,admin,async(req, res) => {
+    try{
+        let fixtures = await Fixture.find().populate("team1").populate("team2")
+        res.json(fixtures)
+    }catch(e){
+        return res.status(400).json(e.message); 
+    }
+})
+
+/** LIST FIXTURES */
 
 /** EDIT FIXTURES */
 
