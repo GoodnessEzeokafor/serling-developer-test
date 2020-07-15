@@ -35,6 +35,7 @@ function validateTeam(team){
         team_name:Joi.string().min(5).max(50).required(),
         team_description:Joi.string().min(5).max(500).required(),
         team_coach:Joi.string().required(),
+        team_size:Joi.number().required()
    }
    return Joi.validate(team, schema)
 }
@@ -52,5 +53,5 @@ TeamSchema.index({
   });
 module.exports = {
     Team:mongoose.model("Team", TeamSchema),
-    validate : validateTeam
+    validateTeam : validateTeam
 }

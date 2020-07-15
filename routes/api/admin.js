@@ -3,6 +3,8 @@ const router = express.Router();
 const {User} = require("../../models/User")
 const admin = require("../../middleware/admin")
 const auth = require("../../middleware/auth")
+const {Team , validateTeam} = require("../../models/Team")
+const {Fixture, validateFixture} = require("../../models/Fixture")
 
 /** set admin **/
 router.put("/set-admin/:id",auth,async (req, res) => {
@@ -33,7 +35,22 @@ router.get("/get-users",auth,admin, async(req, res) => {
 
 
 /** CREATE TEAM  */
-
+router.post("/create-team", auth, admin, async(req, res) => {
+    try{
+        const { error } = validateTeam(req.body); 
+        if (error) return res.status(400).send(error.details[0].message);
+        let team = new Team({
+            team_name: req.body.team_name,
+            team_description: req.body.team_description,
+            team_coach:req.body.team_coach,
+            team_size:req.body.team_size
+        })
+        team = await team.save();
+    res.json(team);
+    }catch(e){
+        return res.status(400).json(e.message); 
+    }
+})
 /** CREATE TEAM  */
 
 

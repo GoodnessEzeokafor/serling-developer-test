@@ -147,3 +147,8 @@ module.exports = router;
 // })
 //   .then(products => console.log(products))
 //   .catch(e => console.error(e));
+
+
+
+// ADMIN
+// "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBkZmNlYjlhMWViZTE4Njk0MDBmM2UiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE1OTQ4MjE5MzB9.xCe5f6qfzCh2td1D0lcxZWp4V-FCaSau2dTBRxaRs70"

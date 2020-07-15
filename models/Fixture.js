@@ -72,7 +72,7 @@ FixtureSchema.index({
   });
 module.exports = {
     Fixture:mongoose.model("Fixture", FixtureSchema),
-    validate : validateFixture
+    validateFixture : validateFixture
 }
 // exports.Fixture = Fixture
 // exports.validate = validateFixture
