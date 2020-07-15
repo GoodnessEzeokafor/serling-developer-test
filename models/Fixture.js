@@ -17,23 +17,20 @@ const FixtureSchema =  new Schema({
         maxlength:100
     },
     team1:{
-        type:String,
-        required:true,
-        minLength:5,
-        maxlength:100
+        type:Schema.Types.ObjectId,
+        ref:'Team'
     },
     team2:{
-        type:String,
-        required:true,
-        minLength:5,
-        maxlength:100
+        type:Schema.Types.ObjectId,
+        ref:'Team'
     },
     status:{
         type:String,
         default:"pending"
     },
     link:{
-        type:String
+        type:String,
+        default:''
     },
     date_created:{
         type:Date,
@@ -51,8 +48,8 @@ function validateFixture(fixture){
     const schema = {
         title:Joi.string().min(5).max(100).required(),
         user: Joi.objectId().required(),
-        team1:Joi.string().min(5).max(100).required(),        
-        team2:Joi.string().min(5).max(100).required(),
+        team1:Joi.objectId().required(),        
+        team2:Joi.objectId().required(),
    }
 
    return Joi.validate(fixture, schema)
