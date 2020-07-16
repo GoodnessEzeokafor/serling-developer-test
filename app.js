@@ -2,7 +2,7 @@ var express = require("express");
 var bodyParser = require('body-parser');
 const cors = require("cors");
 const app = express();
-
+const path = require('path')
 
 app.use(
   cors({
@@ -89,6 +89,16 @@ if ( app.get('env') === 'development' ) {
 /** DATABASE CONFIGURATION FOR PRODUCTION/DEVELOPMENT */
 
 
+
+  /** VIEWS CONFIGURATION */
+  /** SERVING PUBLIC FILES */
+  app.use(express.static(path.join(__dirname, "public")));
+  /** SERVING PUBLIC FILES */
+  app.set("views", path.join(__dirname, "views"));
+  app.set("view engine", "ejs");
+  /** VIEWS CONFIGURATION */
+
+
 /** ROUTES */
 app.use('/api/auth', require('./routes/api/auth'))
 app.use('/api/user', require('./routes/api/user'))
@@ -100,7 +110,7 @@ app.use('/api/fixtures', require('./routes/api/fixtures'))
 
 /** ROUTES */
 app.get("/", (req, res)=> {
-  res.json("HELLO")
+  res.render("index")
 })
 app.listen(port, function () {
   console.log(`Example app listening on port ${port}!`)
