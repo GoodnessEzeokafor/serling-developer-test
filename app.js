@@ -55,17 +55,7 @@ if ( app.get('env') === 'development' ) {
     .catch(err => console.log(err));  
 }else{
   console.log("PRODUCTION .....")
-  mongoose.connect('mongodb://localhost/tests',
-  { useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    // useUnifiedTopology: true ,
-    useFindAndModify: false
-  },
-  )
-    .then(() => console.log('Connected to MongoDB...'))
-    .catch(err => console.log(err));  
-  mongoose.connect('mongodb+srv://sterling:sterling@cluster0.bo0wv.mongodb.net/sterling?retryWrites=true&w=majority',
+  mongoose.connect('mongodb+srv://sterling:sterling@cluster0.bo0wv.mongodb.net/sterlling?retryWrites=true&w=majority',
     { 
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -73,13 +63,13 @@ if ( app.get('env') === 'development' ) {
         useFindAndModify: false 
       },
      
-  )
+  )    .then(() => console.log('Connected to MongoDB...'))
+    .catch(err => console.log(err));  
+
 
 
   
   
-    .then(() => console.log('Connected to MongoDB...'))
-    .catch(err => console.log(err.message));
   // mongoose.connect('mongodb://localhost/cryptoheaven',
   // { useNewUrlParser: true },
   // )
