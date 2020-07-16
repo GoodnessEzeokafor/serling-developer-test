@@ -1,7 +1,7 @@
 ### Sterling Bank Assesment Test 
     Backend Developer Assessment Test
 
-    * POSTMAN DOCUMENTATION https://documenter.getpostman.com/view/8414042/T17Q4PR3
+    * POSTMAN DOCUMENTATION IS HOSTED  **[HERE](https://documenter.getpostman.com/view/8414042/T17Q4PR3)** 
     
     * API IS HOSTED ON https://sterling-assessment-test.herokuapp.com/
 
