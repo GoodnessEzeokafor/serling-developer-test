@@ -38,10 +38,75 @@ mongoose.connect(mongoDb,  { useNewUrlParser: true,
         })
     
       test("It should response the GET method", async () => {
-        const response = await request(app).get("");
-       console.log(response)
+       try{
+         const response = await request(app).get("/api/users/").expect('Content-Type', /json/).expect(200, done);
+       }catch(e){
+           console.log(e.message)
+       }
+
         // expect(response.statusCode).toBe(200);
       });
+
+      test("It should response the GET method", async () => {
+        try{
+          const response = await request(app)
+                                .get("/api/users/me")
+                                .expect('Content-Type', /json/)
+                                .auth('username', 'password')
+                                .expect(200, done);
+        }catch(e){
+            console.log(e.message)
+        }
+ 
+         // expect(response.statusCode).toBe(200);
+       });
+
+
+
+      test("It should response the GET method", async () => {
+        try{
+          const response = await request(app)
+                                .get("/api/users/teams")
+                                .expect('Content-Type', /json/)
+                                .auth('username', 'password')
+                                .expect(200, done);
+        }catch(e){
+            console.log(e.message)
+        }
+ 
+         // expect(response.statusCode).toBe(200);
+       });
+
+
+       test("It should response the GET method", async () => {
+        try{
+          const response = await request(app)
+                                .get("/api/users/fixtures/pending")
+                                .expect('Content-Type', /json/)
+                                .auth('username', 'password')
+                                .expect(200, done);
+        }catch(e){
+            console.log(e.message)
+        }
+ 
+         // expect(response.statusCode).toBe(200);
+       });
+
+
+       test("It should response the GET method", async () => {
+        try{
+          const response = await request(app)
+                                .get("/api/users/fixtures/completed")
+                                .expect('Content-Type', /json/)
+                                .auth('username', 'password')
+                                .expect(200, done);
+        }catch(e){
+            console.log(e.message)
+        }
+ 
+         // expect(response.statusCode).toBe(200);
+       });
+
     });
 
     
