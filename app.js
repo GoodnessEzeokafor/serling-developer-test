@@ -25,8 +25,8 @@ const port = process.env.PORT || 5000;
 
 /** REDIS  CONFIGURATION */
 const redis = require("redis");
-// const port_redis = process.env.PORT || 6379;
-// const redis_client = redis.createClient(port_redis);
+const port_redis = process.env.REDIS_URL || 6379;
+const redis_client = redis.createClient(port_redis);
 
 // redis_client.setex(id, 3600, JSON.stringify(starShipInfoData));
 

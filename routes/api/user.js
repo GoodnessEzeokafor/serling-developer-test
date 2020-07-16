@@ -21,9 +21,15 @@ const {Fixture} = require("../../models/Fixture")
 
 
 /** REDIS CONFIGURATION */
+/** REDIS  CONFIGURATION */
 const redis = require("redis");
-const port_redis = process.env.PORT || 6379;
+const port_redis = process.env.REDIS_URL || 6379;
 const redis_client = redis.createClient(port_redis);
+
+// redis_client.setex(id, 3600, JSON.stringify(starShipInfoData));
+
+/** REDIS  CONFIGURATION */
+
 /** REDIS CONFIGURATION */
 
 router.get("/", (req,res) => {
