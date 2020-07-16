@@ -34,52 +34,63 @@
           <section class="main-section" id="Components">
                 <header><h2>ENDPOINTS</h2></header>
                   <article>
-          <pre>
+        <p>CREATE USER ENDPOINT</p>          
+        <pre>
             <code>
-            class="bl">&lt;div&gt; class="alert alert-primary" role="alert">
-        This is a primary alert—check it out!&lt;/div&gt;
-        &lt;div&gt; class="alert alert-secondary" role="alert">
-        This is a secondary alert—check it out!
-        &lt;/div&gt;
-        &lt;div&gt; class="alert alert-success" role="alert">
-        This is a success alert—check it out!
-        &lt;/div&gt;
-        &lt;div&gt; class="alert alert-danger role="alert">
-        This is a danger alert—check it out!
-        &lt;/div&gt;
-        &lt;div&gt; class="alert alert-warning" role="alert">
-        This is a warning alert—check it out!
-        &lt;/div&gt;
-        &lt;div&gt; class="alert alert-info" role="alert">
-        This is a info alert—check it out!
-        &lt;/div&gt;
-        &lt;div&gt; class="alert alert-light" role="alert">
-        This is a light alert—check it out!
-        &lt;/div&gt;
-        &lt;div&gt; class="alert alert-dark" role="alert">
-        This is a dark alert—check it out!
-        &lt;/div&gt;</code>
+                <!-- curl --location --request POST 'http://127.0.0.1:5000/api/user' \ -->
+                POST /api/user
+            </code>
+
           </pre>
         
-            <section class="main-section" id="Reference">
-                <header><h2>Reference</h2></header>
-                  <article>
-                    <p>All the documentation in this page was taken from <a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/" target="_blank">Get Bootstrap</a>.</p>
-                  </article>
-            </section>
+
+
+          <p>GET USER ENDPOINT
+        </p>          
+        <pre>
+            <code>
+                GET /api/user/me
+            </code>
+
+          </pre>
+        
+          <p>GET PENDING FIXTURES</p>          
+        <pre>
+            <code>
+                /api/user/fixtures/pending                        
+            </code>
+
+          </pre>
+        
+
+
+
+
+          <p>GET COMPLETED FIXTURES ENDPOINT</p>          
+        <pre>
+            <code>
+                GET /api/user/fixtures/completed
+            </code>
+
+          </pre>
+        
+
             </main>
               
             <hr>
          <footer>
               <div class="contact">
-            <a href="https://github.com/linh4" target="_blank">
-              <span class="icon"><i class="fa fa-github"></i></span></a>
-            <a href="https://codepen.io/linh4/" target="_blank">
-              <span class="icon"><i class="fa fa-codepen"></i></span></a>
-            <a href="https://www.freecodecamp.org/linh4" target="_blank">
-              <span class="icon"><i class="fa fa-free-code-camp"></i></span></a>
+            <a class="mr-2" href="https://github.com/GoodnessEzeokafor target="_blank">
+            Github
+            </a>
+            <a href="https://www.linkedin.com/in/goodness-ezeokafor-1a0528162/" target="_blank">
+                Linkedin
+            </a>
+            <a href="https://twitter.com/GoodyEzeokafor" target="_blank">
+            Twitter  
+            </a>
           </div>
-              <p>&copy 2018 Linh Huynh</p>
+              <p>&copy 2020 Goodness Ezeokafor</p>
             </footer>    
             
           </div>
