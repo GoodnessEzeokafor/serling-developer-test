@@ -40,7 +40,7 @@ router.get("/me", auth, async(req, res) => {
             .catch((e) => {
                 return  res.status(400).json(e.message)
             })
-    redis_client.setex(user.username, 3600, JSON.stringify(user));
+    redis_client.setex(user.username, 1020, JSON.stringify(user));
     res.json(user)
 })
 
@@ -158,22 +158,26 @@ router.get("/teams/search", async(req, res) => {
 })
 /** end search fixtures */
 module.exports = router;
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBlMDAxM2IxYTIwZjNmNDJjNTRkMDciLCJpYXQiOjE1OTQ3NTMwNDR9.7LJ4cw_0G0DHlK4vog_2Oj7-D9K-END_w6hO1-4Tkws
+
+
+// "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjEwYmE2NTNjOTk3MDAwMTdlMjMwNzgiLCJpYXQiOjE1OTQ5MzE4NDd9.XlVMjETkeu37dyA5Wk2TjISVl2QeMSLO9GN-APqBIFM"
+// 5f10ba653c99700017e23078
+// https://sterling-assessment-test.herokuapp.com
 
 
 
-// Product.find({
-//   $text: { $search: term },
-// })
-//   .then(products => console.log(products))
-//   .catch(e => console.error(e));
+// TEAMS ID
+
+// 5f10bd673c99700017e23079
+
+// 5f10bd703c99700017e2307a
+
+// 5f10bd773c99700017e2307b
+
+// 5f10bd7c3c99700017e2307c
 
 
+// FIXTURE ID
 
-// ADMIN
-// "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBkZmNlYjlhMWViZTE4Njk0MDBmM2UiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE1OTQ4MjE5MzB9.xCe5f6qfzCh2td1D0lcxZWp4V-FCaSau2dTBRxaRs70"
-
-
-
-// TWAM ID
-// 5f0f0d8b8fb56419d0b55d49
+//5f10bf913c99700017e2307d 
+// 5f10bfa13c99700017e2307e
