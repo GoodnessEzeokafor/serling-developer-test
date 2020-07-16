@@ -1,3 +1,4 @@
+require("dotenv").config();
 var express = require("express");
 var bodyParser = require('body-parser');
 const cors = require("cors");
@@ -55,7 +56,7 @@ if ( app.get('env') === 'development' ) {
     .catch(err => console.log(err));  
 }else{
   console.log("PRODUCTION .....")
-  mongoose.connect('mongodb+srv://sterling:E4T2M5Y3b1ZNT1SP@cluster0.bo0wv.mongodb.net/sterling?retryWrites=true&w=majority',
+  mongoose.connect(`${process.env.db_url}`,
     { 
         useNewUrlParser: true,
         useUnifiedTopology: true,
