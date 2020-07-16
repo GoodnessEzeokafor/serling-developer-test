@@ -158,26 +158,3 @@ router.get("/teams/search", async(req, res) => {
 })
 /** end search fixtures */
 module.exports = router;
-
-
-// "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjEwYmE2NTNjOTk3MDAwMTdlMjMwNzgiLCJpYXQiOjE1OTQ5MzE4NDd9.XlVMjETkeu37dyA5Wk2TjISVl2QeMSLO9GN-APqBIFM"
-// 5f10ba653c99700017e23078
-// https://sterling-assessment-test.herokuapp.com
-
-
-
-// TEAMS ID
-
-// 5f10bd673c99700017e23079
-
-// 5f10bd703c99700017e2307a
-
-// 5f10bd773c99700017e2307b
-
-// 5f10bd7c3c99700017e2307c
-
-
-// FIXTURE ID
-
-//5f10bf913c99700017e2307d 
-// 5f10bfa13c99700017e2307e
