@@ -55,7 +55,7 @@ if ( app.get('env') === 'development' ) {
     .catch(err => console.log(err));  
 }else{
   console.log("PRODUCTION .....")
-  mongoose.connect('mongodb+srv://sterling:sterling@cluster0.bo0wv.mongodb.net/sterlling?retryWrites=true&w=majority',
+  mongoose.connect('mongodb+srv://sterling:sterling@cluster0.bo0wv.mongodb.net/sterling?retryWrites=true&w=majority',
     { 
         useNewUrlParser: true,
         useUnifiedTopology: true,
