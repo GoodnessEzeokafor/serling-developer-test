@@ -65,21 +65,21 @@ if ( app.get('env') === 'development' ) {
   )
     .then(() => console.log('Connected to MongoDB...'))
     .catch(err => console.log(err));  
-  // mongoose.connect('mongodb+srv://cryptoinvest:PMQ7343TsK6oQP55@cluster0-uiayc.mongodb.net/crypto?retryWrites=true&w=majority',
-  //   { 
-  //       useNewUrlParser: true,
-  //       useUnifiedTopology: true,
-  //       // useUnifiedTopology: true ,
-  //       useFindAndModify: false 
-  //     },
+  mongoose.connect('mongodb+srv://sterling:sterling@cluster0.bo0wv.mongodb.net/sterling?retryWrites=true&w=majority',
+    { 
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        // useUnifiedTopology: true ,
+        useFindAndModify: false 
+      },
      
-  // )
+  )
 
 
   
-  // 
-    // .then(() => console.log('Connected to MongoDB...'))
-    // .catch(err => console.log(err.message));
+  
+    .then(() => console.log('Connected to MongoDB...'))
+    .catch(err => console.log(err.message));
   // mongoose.connect('mongodb://localhost/cryptoheaven',
   // { useNewUrlParser: true },
   // )
