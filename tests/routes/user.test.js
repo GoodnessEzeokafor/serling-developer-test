@@ -1,19 +1,77 @@
-const app = require("../../app"); // Link to your server file
-const supertest = require("supertest");
+// const app = require("../../routes/api/user"); // Link to your server file
+// const supertest = require("supertest");
+// const request = require("supertest");
+// const app = require("../../app");
+const request = require('supertest');
+const express = require('express');
+ 
+const app = express();
 const {User} = require('../../models/User')
 // const 
-const request = supertest(app);
+// const request = supertest(app);
+
+var mongoose = require('mongoose')
+var mongoDb = "mongodb://localhost/test"
+mongoose.connect(mongoDb,  { useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    // useUnifiedTopology: true ,
+    useFindAndModify: false
+  },)
+    .then((db) => {
+        console.log("Connected")
+    })
 
 
-it("Should save user to database", async done => {
-    const res = await request.post("/api/user").send({
-      username: "Zell",
-      email: "testing@gmail.com",
-      password:"password",
-      confirmPassword:"password"
+    
+    describe("Test the root path", () => {
+        beforeAll(async() => {
+            await User.remove({})
+        });
+        
+        afterEach(async() => {
+            await User.remove({})
+        })
+    
+        afterAll(async() => {
+            await mongoose.connection.close()
+        })
+    
+      test("It should response the GET method", async () => {
+        const response = await request(app).get("");
+       console.log(response)
+        // expect(response.statusCode).toBe(200);
+      });
     });
-  
-    // Searches the user in the database
-    const user = await User.findOne({ email: "testing@gmail.com" });
-    done();
-  });
+
+    
+// describe('TESTING USER ROUTEs', () => {
+//     beforeAll(async() => {
+//         await User.remove({})
+//     });
+    
+//     afterEach(async() => {
+//         await User.remove({})
+//     })
+
+//     afterAll(async() => {
+//         await mongoose.connection.close()
+//     })
+
+//     it("Should save user to database", async done => {
+//         console.log("HELLO WORLD TEST")
+//         // done()
+//         const res = await request.post("/api/user").send({
+//           username: "Zell",
+//           email: "testing@gmail.com",
+//           password:"password",
+//           confirmPassword:"password"
+//         });
+      
+//         // // Searches the user in the database
+//         // const user = await User.findOne({ email: "testing@gmail.com" });
+//         done();
+
+//       });    
+// })
+

@@ -19,7 +19,9 @@ const {Fixture} = require("../../models/Fixture")
 
 /** MODELS */
 
-
+router.get("/", (req,res) => {
+    res.send('HELLO')
+})
 router.get("/me", auth, async(req, res) => {
     const user = await User.findById(req.user._id).select('-password')
             .catch((e) => {
