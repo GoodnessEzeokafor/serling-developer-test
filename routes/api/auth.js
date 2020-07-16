@@ -24,6 +24,7 @@ router.post('/', async(req, res) => {
   
 
     const token = user.generateAuthtoken(`vtg7880h)&*%^%@$g52`);
+
     res.json(token);
 })
 

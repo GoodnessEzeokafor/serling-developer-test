@@ -34,6 +34,7 @@ router.get("/me", auth, async(req, res) => {
             .catch((e) => {
                 return  res.status(400).json(e.message)
             })
+    redis_client.setex(user.username, 3600, JSON.stringify(user));
     res.json(user)
 })
 
@@ -73,6 +74,7 @@ router.post("/", async(req, res) => {
 router.get("/teams", auth,(req, res) => {
     Team.find()
         .then((team) => {
+            redis_client.setex("teams", 3600, JSON.stringify(team));
             res.json(team)
         })
         .catch((e) => {
@@ -87,6 +89,7 @@ router.get("/fixtures/pending", auth,async(req, res) => {
     // const fixture = Fixture.Fixture
     try{
         const get_fixture =await Fixture.find({}).where('status').equals('pending')
+        redis_client.setex("pending_fixtures", 3600, JSON.stringify(get_fixture));
         res.json(get_fixture)
     }catch(e){
         return res.status(400).json(e.message); 
@@ -106,6 +109,7 @@ router.get("/fixtures/pending", auth,async(req, res) => {
 router.get("/fixtures/completed", auth,async(req, res) => {
     try{
         const get_fixture =await Fixture.find({}).where('status').equals('completed')
+        redis_client.setex("completed_fixtures", 3600, JSON.stringify(get_fixture));
         res.json(get_fixture)
     }catch(e){
         return res.status(400).json(e.message); 
@@ -120,9 +124,9 @@ router.get("/fixtures/search", async(req, res) => {
         const query = req.query.search_term
         console.log(query)
         const search_fixtures = await Fixture.find({
-              $text: { $search: query },
-              
+              $text: { $search: query },              
         })
+        redis_client.setex("searched_fixtures", 3600, JSON.stringify(search_fixtures));
         res.json(search_fixtures)
     }catch(e){
         return res.status(400).json(e.message); 
@@ -136,11 +140,12 @@ router.get("/teams/search", async(req, res) => {
     try{
         const query = req.query.search_term
         console.log(query)
-        const search_fixtures = await Team.find({
+        const search_teams = await Team.find({
               $text: { $search: query },
               
         })
-        res.json(search_fixtures)
+        redis_client.setex("searched_teams", 3600, JSON.stringify(search_teams));
+        res.json(search_teams)
     }catch(e){
         return res.status(400).json(e.message); 
     }
