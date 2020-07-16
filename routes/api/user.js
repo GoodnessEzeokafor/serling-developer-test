@@ -19,6 +19,13 @@ const {Fixture} = require("../../models/Fixture")
 
 /** MODELS */
 
+
+/** REDIS CONFIGURATION */
+const redis = require("redis");
+const port_redis = process.env.PORT || 6379;
+const redis_client = redis.createClient(port_redis);
+/** REDIS CONFIGURATION */
+
 router.get("/", (req,res) => {
     res.send('HELLO')
 })
