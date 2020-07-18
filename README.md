@@ -7,3 +7,12 @@ Backend Developer Assessment Test
 
 * CODE HOSTED ON https://github.com/GoodnessEzeokafor/serling-developer-test
 <!-- sudo systemctl status redis -->
+
+
+### Pulling Docker image
+* docker pull
+
+### Pulling Source code
+     git clone https://github.com/GoodnessEzeokafor/serling-developer-test
+     cd serling-developer-test
+     git pull origin master
